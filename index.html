@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="iphone-minus"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="iphone-count">
+                           <button class="btn btn-default"  id="iphone-plus"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="case-minus"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" id="case-count" value="1">
+                           <button class="btn btn-default" id="case-plus"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$59</h5>
@@ -77,6 +77,56 @@
          </div>
       </div>
    </section>
+
+
+
+   <script>
+
+
+      const iPhonePlus = document.getElementById("iphone-plus");
+         iPhonePlus.addEventListener("click", function(){
+         addingCart("iphone-count");
+      });
+
+      const iphoneMinus = document.getElementById("iphone-minus");
+      iphoneMinus.addEventListener("click", function(){
+        removingCart("iphone-count");
+      });
+
+      const casePlus = document.getElementById("case-plus");
+         casePlus.addEventListener("click", function(){
+         addingCart("case-count");
+      });
+
+      const caseMinus = document.getElementById("case-minus");
+      caseMinus.addEventListener("click", function(){
+        removingCart("case-count");
+      });
+
+
+      function addingCart(id){
+         const Count = document.getElementById(id).value;
+         const Number = parseFloat(Count);
+         var Total = Number + 1;
+         
+         document.getElementById(id).value = Total;
+      }
+
+      function removingCart(id){
+         const Count = document.getElementById(id).value;
+         const Number = parseFloat(Count);
+         if(Number > 1){
+         var Total = Number - 1;
+         }
+         else{
+            var Total = Number;
+         }
+         document.getElementById(id).value = Total;
+         
+      }
+
+   </script>
+
 </body>
 
 </html>
