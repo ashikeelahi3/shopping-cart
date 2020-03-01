@@ -29,7 +29,7 @@
                            <input type="text" class="form-control text-center" value="1" id="iphone-count">
                            <button class="btn btn-default"  id="iphone-plus"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <Span id="iphone-price">1219</Span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -48,7 +48,7 @@
                            <button class="btn btn-default" id="case-plus"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="case-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="sub-total">1278</span></h5>
+                        <h5>$ <span id="tax">1.28</span></h5>
+                        <h5>$ <span id="total" >1279.28</span></h5>
                      </div>
                   </div>
                </div>
@@ -83,45 +83,102 @@
    <script>
 
 
+         // iPhone Zone ......................................................
+
       const iPhonePlus = document.getElementById("iphone-plus");
          iPhonePlus.addEventListener("click", function(){
-         addingCart("iphone-count");
+         addingCart("iphone-count", "iphone-price", 1219, "sub-total", "tax", "total");
+         
       });
 
       const iphoneMinus = document.getElementById("iphone-minus");
       iphoneMinus.addEventListener("click", function(){
-        removingCart("iphone-count");
+        removingCart("iphone-count", "iphone-price", 1219, "sub-total", "tax", "total" );
       });
+
+
+      // Case zone ......................................................
 
       const casePlus = document.getElementById("case-plus");
          casePlus.addEventListener("click", function(){
-         addingCart("case-count");
+         addingCart("case-count", "case-price", 59, "sub-total", "tax", "total");
       });
 
       const caseMinus = document.getElementById("case-minus");
       caseMinus.addEventListener("click", function(){
-        removingCart("case-count");
+        removingCart("case-count", "case-price", 59, "sub-total", "tax", "total");
       });
 
 
-      function addingCart(id){
+
+      // Adding Function ......................................................
+
+
+      function addingCart(id, id2, productPrice, price2, tax, total){
          const Count = document.getElementById(id).value;
          const Number = parseFloat(Count);
          var Total = Number + 1;
          
          document.getElementById(id).value = Total;
+
+         const Price = document.getElementById(id2).innerText;
+         const PriceNumber = parseFloat(Price);
+         const totalPrice = PriceNumber + productPrice ;
+         document.getElementById(id2).innerText = totalPrice;
+
+         const subTotal = document.getElementById(price2).innerText;
+         const subNumber = parseFloat(subTotal);
+         const subTotalPrice = subNumber + productPrice;
+         document.getElementById(price2).innerText = subTotalPrice;
+
+         
+         var totalTax = subTotalPrice * 0.001;
+         var totTax = totalTax.toFixed(2);
+         document.getElementById(tax).innerText = totTax;
+
+         
+         var totalAmount = subTotalPrice + totalTax;
+         var totAmount = totalAmount.toFixed(2);
+         document.getElementById(total).innerText = totAmount;
+         
       }
 
-      function removingCart(id){
+      // Removing function ......................................................
+
+      function removingCart(id, id2, productPrice, price2, tax, total){
          const Count = document.getElementById(id).value;
          const Number = parseFloat(Count);
+
+         const Price = document.getElementById(id2).innerText;
+         const PriceNumber = parseFloat(Price);
+
+         const subTotal = document.getElementById(price2).innerText;
+         const subNum = parseFloat(subTotal);
+
+        
+
          if(Number > 1){
          var Total = Number - 1;
+         var totalPhonePrice = PriceNumber - productPrice ;
+         var subTotalPrice = subNum - productPrice;
          }
          else{
             var Total = Number;
+            var totalPhonePrice = iPhonPriceNumber;
+            var subTotalPrice = subNum;
          }
          document.getElementById(id).value = Total;
+         document.getElementById(id2).innerText = totalPhonePrice;
+         document.getElementById(price2).innerText = subTotalPrice;
+
+         var totalTax = subTotalPrice * 0.001;
+         var totTax = totalTax.toFixed(2);
+         document.getElementById(tax).innerText = totTax;
+
+         var totalAmount = subTotalPrice + totalTax;
+         var totAmount = totalAmount.toFixed(2);
+         document.getElementById(total).innerText = totAmount;
+         
          
       }
 
