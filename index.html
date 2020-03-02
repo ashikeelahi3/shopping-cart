@@ -16,7 +16,7 @@
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
+               <div id="iphone-area" class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
@@ -30,12 +30,15 @@
                            <button class="btn btn-default"  id="iphone-plus"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$ <Span id="iphone-price">1219</Span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <button id="remove-iphone">
+                           <img src="images/remove.png" alt="" class="remove-item">
+                        </button>
+                        
                      </div>
                   </div>
                </div>
 
-               <div class="cart-item">
+               <div id="case-area" class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
@@ -49,7 +52,9 @@
 
                         </div>
                         <h5>$ <span id="case-price">59</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <button id="remove-case">
+                           <img src="images/remove.png" alt="" class="remove-item">
+                        </button>
                      </div>
                   </div>
                </div>
@@ -59,7 +64,7 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
+                        <h5>Tax: (0.1%)</h5>
                         <h5>Total:</h5>
                      </div>
 
@@ -171,15 +176,46 @@
          document.getElementById(id2).innerText = totalPhonePrice;
          document.getElementById(price2).innerText = subTotalPrice;
 
-         var totalTax = subTotalPrice * 0.001;
-         var totTax = totalTax.toFixed(2);
+         const totalTax = subTotalPrice * 0.001;
+         const totTax = totalTax.toFixed(2);
          document.getElementById(tax).innerText = totTax;
 
-         var totalAmount = subTotalPrice + totalTax;
-         var totAmount = totalAmount.toFixed(2);
+         const totalAmount = subTotalPrice + totalTax;
+         const totAmount = totalAmount.toFixed(2);
          document.getElementById(total).innerText = totAmount;
          
          
+      }
+         removing("remove-iphone", "iphone-area", "iphone-price", "sub-total","tax", "total" );
+         removing("remove-case", "case-area", "case-price", "sub-total", "tax", "total" );
+
+         function removing(remove, area, removePrice, removeAfter, tax, total){
+            const removeIphone = document.getElementById(remove);
+            removeIphone.addEventListener("click", function(){
+            consadd .
+            git commit t IphoneArea = document.getElementById(area);
+            IphoneArea.style.display = "none";
+
+            const productPrice = document.getElementById(removePrice).innerText;
+            const productNumber = parseFloat(productPrice);
+
+            const subTotal =  document.getElementById(removeAfter).innerText;
+            const SubtotalNumber = parseFloat(subTotal);
+            const totalPrice = SubtotalNumber - productNumber ;
+           
+
+            var totalTax = totalPrice * 0.001;
+            var totTax = totalTax.toFixed(2);
+          
+
+            
+           const tot = totalPrice + totalPrice * 0.001;
+            const totAmount = tot.toFixed(2);
+            document.getElementById(removeAfter).innerText = totalPrice;
+            document.getElementById(tax).innerText = totTax;
+            document.getElementById(total).innerText = totAmount;
+         })
+            
       }
 
    </script>
