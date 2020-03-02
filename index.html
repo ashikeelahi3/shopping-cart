@@ -14,7 +14,7 @@
 
    <section>
       <div class="container">
-         <div class="cart">
+         <div id="complete" class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div id="iphone-area" class="cart-item">
                   <div class="row">
@@ -76,12 +76,20 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="confirm" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
       </div>
    </section>
+
+
+   <div id="thanks">
+      <h4>Your order has been confirmed.</h4>
+      <p>
+         <h4>Thanks for your order.</h4>
+      </p>
+   </div>
 
 
 
@@ -216,6 +224,19 @@
          })
             
       }
+
+      const Confirm = document.getElementById("confirm");
+      Confirm.addEventListener("click", function(){
+
+         const complete = document.getElementById("complete");
+         complete.style.display = "none";
+
+         const thanks = document.getElementById("thanks");
+         thanks.style.display = "block";
+         
+      })
+
+
 
    </script>
 

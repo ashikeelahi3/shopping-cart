@@ -58,3 +58,11 @@ body{
 #remove-iphone, #remove-case {
 	border: none;
 }
+
+#thanks{
+	padding-top: 100px;
+	text-align: center;
+	color: tomato;
+	display: none;
+	
+}
